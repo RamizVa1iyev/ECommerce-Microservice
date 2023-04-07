@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "EventBus.Base": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:56905;http://localhost:56912"
+    }
+  }
+}
