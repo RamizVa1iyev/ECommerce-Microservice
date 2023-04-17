@@ -66,6 +66,28 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PaymentService", "PaymentSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentService.Api", "src\Services\PaymentService\PaymentService.Api\PaymentService.Api.csproj", "{98A857C0-A4E7-45D8-B12D-3032229DF6A4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-compose-files", "docker-compose-files", "{8B519632-DDD2-46D2-ABB4-B41D2C969F8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "consul", "consul", "{CA2B0967-EF11-4E58-8924-1E9195D824A2}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-files\consul\docker-compose.yml = docker-compose-files\consul\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rabbitmq", "rabbitmq", "{40008578-167D-44F3-8C90-D1E99A87A6EF}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-files\rabbitmq\docker-compose.yml = docker-compose-files\rabbitmq\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "redis", "redis", "{FB0162DB-14A0-4693-86A6-B4BB7968C9A2}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-files\redis\docker-compose.yml = docker-compose-files\redis\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sqlserver", "sqlserver", "{F5C568C0-5459-4748-A890-A8723580DBE5}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-files\sqlserver\docker-compose.yml = docker-compose-files\sqlserver\docker-compose.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +187,10 @@ Global
 		{A54AAE9F-02D9-40FF-BE11-0A15FC033A9B} = {C270D3B0-2935-4A94-8AA2-FC15650D3F6B}
 		{43F67AC4-10DA-4051-B87C-F49CBC099BEC} = {96BAFB13-CA7D-45C7-9BD4-1FB812073D5C}
 		{98A857C0-A4E7-45D8-B12D-3032229DF6A4} = {43F67AC4-10DA-4051-B87C-F49CBC099BEC}
+		{CA2B0967-EF11-4E58-8924-1E9195D824A2} = {8B519632-DDD2-46D2-ABB4-B41D2C969F8F}
+		{40008578-167D-44F3-8C90-D1E99A87A6EF} = {8B519632-DDD2-46D2-ABB4-B41D2C969F8F}
+		{FB0162DB-14A0-4693-86A6-B4BB7968C9A2} = {8B519632-DDD2-46D2-ABB4-B41D2C969F8F}
+		{F5C568C0-5459-4748-A890-A8723580DBE5} = {8B519632-DDD2-46D2-ABB4-B41D2C969F8F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8A9C46C-BCCA-415A-9F06-7339DE1DB5F9}

@@ -44,7 +44,7 @@ namespace EventBus.Base.SubscriptionManagers
                 this._handlers.Add(eventName, new List<SubscriptionInfo>());
             }
 
-            if (!this._handlers[eventName].Any(s => s.HandlerType == handlerType))
+            if (this._handlers[eventName].Any(s => s.HandlerType == handlerType))
             {
                 throw new ArgumentException($"Handler Type {handlerType.Name} already registered for '{eventName}'", nameof(handlerType));
             }

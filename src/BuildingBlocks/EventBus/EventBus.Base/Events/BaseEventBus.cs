@@ -20,13 +20,13 @@ namespace EventBus.Base.Events
             EventBusSubscriptionManager = new InMemoryeventBusSubscriptionManager(this.ProcessEventName);
         }
 
-        public virtual string ProcessEventName(string eventName)
+        public virtual string ProcessEventName(string eventName) 
         {
             if (this.EventBusConfig.DeleteEventPrefix)
-                _ = eventName.TrimStart(this.EventBusConfig.EventNamePrefix.ToArray());
+                eventName = eventName.TrimStart(this.EventBusConfig.EventNamePrefix.ToArray());
 
             if (this.EventBusConfig.DeleteEventSuffix)
-                _ = eventName.TrimStart(this.EventBusConfig.EventNameSuffix.ToArray());
+                eventName = eventName.TrimEnd(this.EventBusConfig.EventNameSuffix.ToArray());
 
             return eventName;
         }
@@ -44,7 +44,7 @@ namespace EventBus.Base.Events
 
         public async Task<bool> ProcessEvent(string eventName, string message)
         {
-            _ = this.ProcessEventName(eventName);
+            eventName = this.ProcessEventName(eventName);
 
             var processed = false;
 
@@ -57,7 +57,7 @@ namespace EventBus.Base.Events
                 foreach (var subscription in subscriptions)
                 {
                     var handler = this.ServiceProvider.GetService(subscription.HandlerType);
-                    if (handler != null)
+                    if (handler == null)
                         continue;
 
                     var eventType = this.EventBusSubscriptionManager.GetEventTypeByName($"{this.EventBusConfig.EventNamePrefix}{eventName}{this.EventBusConfig.EventNameSuffix}");

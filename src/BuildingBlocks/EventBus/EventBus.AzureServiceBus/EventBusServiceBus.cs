@@ -56,7 +56,7 @@ namespace EventBus.AzureServiceBus
         public override void Subscribe<T, TH>()
         {
             var eventName = typeof(T).Name;
-            _ = base.ProcessEventName(eventName);
+            eventName = base.ProcessEventName(eventName);
 
             if (!base.EventBusSubscriptionManager.HasSubscriptionsForEvent(eventName))
             {

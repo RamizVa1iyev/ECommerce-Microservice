@@ -1,4 +1,14 @@
+using Microsoft.Extensions.Configuration;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
+using Ocelot.Provider.Consul;
+using Web.ApiGateway.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
+var ocelotConfig = builder.Configuration.AddJsonFile("Configurations/ocelot.json");
+builder.Configuration.AddEnvironmentVariables();
 
 // Add services to the container.
 
@@ -7,16 +17,34 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
+//Configuration for ocelot, consul and swagger
+
+builder.Services.AddOcelot().AddConsul();
+builder.Services.AddSwaggerForOcelot(builder.Configuration);
+builder.Services.AddConsul(builder.Configuration);
+//builder.Configuration.AddOcelotConfiguration(builder.Services);
+
+
+
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+
+//app.AddOcelotConfiguration(ocelotConfig);
+
+app.UseSwaggerForOcelotUI(opt =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    opt.PathToSwaggerGenerator = "/swagger/docs";
+});
+
 
 app.UseHttpsRedirection();
+
+app.UseOcelot().Wait();
 
 app.UseAuthorization();
 
