@@ -36,7 +36,10 @@
         {
           "Name": "CatalogService API",
           "Version": "v1",
-          "Url": "http://{CatalogService}:{port}/swagger/v1/swagger.json"
+          "Service": {
+            "Name": "CatalogService",
+            "Path": "/swagger/v1/swagger.json"
+          }
         }
       ]
     },
@@ -46,7 +49,10 @@
         {
           "Name": "IdentityService API",
           "Version": "v1",
-          "Url": "{IdentityService/swagger}"
+          "Service": {
+            "Name": "IdentityService",
+            "Path": "/swagger/v1/swagger.json"
+          }
         }
       ]
     }

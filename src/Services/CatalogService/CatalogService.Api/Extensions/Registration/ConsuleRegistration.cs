@@ -47,16 +47,6 @@ namespace CatalogService.Api.Extensions.Registration
             consulClient.Agent.ServiceDeregister(registration.ID).Wait();
             consulClient.Agent.ServiceRegister(registration).Wait();
 
-            //Add swagger url
-            var swaggerUrl = $"{address}/swagger/v1/swagger.json";
-
-            var putPair = new KVPair($"{registration.ID}/swagger")
-            {
-                Value = Encoding.UTF8.GetBytes(swaggerUrl)
-            };
-
-            consulClient.KV.Put(putPair).Wait();
-
             lifetime.ApplicationStopping.Register(() =>
             {
                 logger.LogInformation("Deregistering from consul");
